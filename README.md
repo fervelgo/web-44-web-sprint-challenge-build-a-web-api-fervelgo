@@ -22,7 +22,7 @@ In meeting the minimum viable product (MVP) specifications listed below, your pr
 - [ ] Run tests locally executing `npm test`.
 - [ ] Reset the database to its original state executing `npm run resetdb`.
 
-### Task 2: CodeGrade Setup pruebononon
+### Task 2: CodeGrade Setup pruebononon cac
 
 - [ ] Accept the repository sent to your email inbox associated with your Github account.
 - [ ] Make a commit and push it to Github.
