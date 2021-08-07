@@ -1,8 +1,10 @@
 const express = require('express');
 const server = express();
 const projectRouter = require('./projects/projects-router.js');
+const actionsRouter = require('./actions/actions-router.js')
 
 server.use('/api/projects', projectRouter);
+server.use('/api/actions', actionsRouter);
 // Configure your server here
 // Build your actions router in /api/actions/actions-router.js
 // Build your projects router in /api/projects/projects-router.js

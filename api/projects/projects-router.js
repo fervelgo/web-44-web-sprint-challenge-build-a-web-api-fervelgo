@@ -12,30 +12,46 @@ router.get('/', (req, res, next) => {
     .then(projects => {
         res.json(projects);
     })
-    .catch(error =>{
-        next(error)
+    .catch(next)
     });
-});
 
 router.get('/:id', validateProjectId, (req, res) => {
-    console.log(req.project)
     res.json(req.project)
 })
 
-router.post('/api/projects', (req, res) => {
-    
+router.post('/', (req, res, next) => {
+    Projects.insert(req.project)
+    .then(newProject => {
+        res.status(201).json(newProject)
+    })
+    .catch(next)
 })
 
-router.put('/api/projects/:id', validateProjectId, (req, res) => {
-    
+router.put('/:id', validateProjectId, (req, res, next) => {
+    Projects.update(req.params.id, req.project)
+    .then(updatedProject => {
+        res.json(updatedProject)
+    })
+    .catch(next)
 })
 
-router.delete('/api/projects/:id', validateProjectId, (req, res) => {
-    
+router.delete('/:id', validateProjectId, async (req, res, next) => {
+  try {
+    const response = await Projects.remove(req.params.id)
+    res.json(response)
+  } catch (err) {
+      next(err)
+  }
 })
-
-router.get('/api/projects/:id/actions', validateProjectId, (req, res) => {
     
+
+router.get('/:id/actions', validateProjectId, async (req, res, next) => {
+    try {
+        const response = await Projects.getProjectActions(req.params.id)
+        res.json(response)
+    } catch (err) {
+        next(err)
+    }
 })
 
 module.exports = router;

@@ -16,6 +16,20 @@ async function validateProjectId(req,res,next) {
     
 }
 
+// async function validateProject(req, res, next) {
+//     try{
+//     const { name, description } =  await Project.post(res.body)
+//     if (!name || !description) {
+//         res.status(400).json({message: 'missing name'})
+//     } else {
+//         next()
+//     }
+// } catch {
+//     res.status(500)
+// }
+// }
+
 module.exports = {
-    validateProjectId
+    validateProjectId,
+    // validateProject
 }
